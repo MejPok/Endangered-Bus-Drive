@@ -17,16 +17,19 @@ public class PeopleManager : MonoBehaviour
     public int peopleToLeave;
     bool gotHistory;
     Health busHealth;
+    NPCcontrol control;
 
     void Start()
     {
-        
+        control = GetComponent<NPCcontrol>();
     }
     public void GetPeople(GameObject bus)
     {
         busHealth = bus.GetComponent<Health>();
         PeopleEagerness();
 
+
+        
         PeopleGettingOn();
         PeoplGettingOff();
     }
@@ -84,8 +87,8 @@ public class PeopleManager : MonoBehaviour
         if (timer > Delay && PeopleToBoard > 0)
         {
             PeopleToBoard--;
-            busHealth.Passengers++;
             peopleGotOn++;
+            control.LetNPCin(peopleGotOn - 1);
 
             Debug.Log("Person got on the bus");
             timer = 0f;
