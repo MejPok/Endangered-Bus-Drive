@@ -27,12 +27,27 @@ public class Health : MonoBehaviour
 
     public void HitObstacle(int damage)
     {
+        Durability -= damage;
+        
+    }
+    public void HitWall(int damage)
+    {
+        Durability -= damage;
+        Debug.Log("wall for " + damage);
 
+        if (damage > 60) { Passengers -= 7; }
+        else if (damage > 40){ Passengers -= 4; }
+        else if (damage > 30){ Passengers -= 2; }
+        else if (damage > 20){ Passengers -= 1; }
+        else if (damage > 10){ if (Random.Range(0, 10) == 1) Passengers -= 1; }
+        else if (damage > 5){ if (Random.Range(0, 15) == 1) Passengers -= 1; }
+
+        DeathCheck();
     }
     public void HitDamager(int damage)
     {
         Durability -= damage;
-        Passengers -= damage;
+        Passengers -= (int)(damage / 10);
         DeathCheck();
         Debug.Log("" + Durability);
         Debug.Log("Passengers died " + damage);

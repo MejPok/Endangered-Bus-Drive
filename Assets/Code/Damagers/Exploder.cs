@@ -18,7 +18,7 @@ public class Exploder : MonoBehaviour
         Debug.Log("Exploded");
         Health busHealth = bus.GetComponent<Health>();
         busHealth.HitDamager(90);
-        Instantiate(explosionEffect, bus.transform.position, Quaternion.identity).
+        Instantiate(explosionEffect, transform.position, Quaternion.identity).
         GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject);
     }
