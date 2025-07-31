@@ -18,7 +18,12 @@ public class Health : MonoBehaviour
 
     public void HitObstacle(int damage)
     {
-        
+
+    }
+    public void HitDamager(int damage)
+    {
+        Durability -= damage;
+        Debug.Log("" + Durability);
     }
 
 }

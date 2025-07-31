@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class CarController : MonoBehaviour {
 
@@ -27,7 +28,13 @@ public class CarController : MonoBehaviour {
 
     void ApplyEngineForce() {
 
-        if (accelerationInput == 0) {
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 5, Time.fixedDeltaTime * 3);
+        }
+        else if (accelerationInput == 0)
+        {
             carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 2, Time.fixedDeltaTime * 3);
         }
         else
