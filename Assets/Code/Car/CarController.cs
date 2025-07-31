@@ -16,7 +16,7 @@ public class CarController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
         rb.drag = drag;
-        rb.angularDrag = 5f;
+        
     }
 
     void Update()
@@ -39,7 +39,7 @@ void FixedUpdate()
     }
 
     // ✅ Allow rotation when physically moving (not based on input)
-    bool isPhysicallyMoving = rb.velocity.magnitude > 0.5f;
+    bool isPhysicallyMoving = rb.velocity.magnitude > 0.8f;
 
     if (isPhysicallyMoving && Mathf.Abs(turnInput) > 0f)
     {

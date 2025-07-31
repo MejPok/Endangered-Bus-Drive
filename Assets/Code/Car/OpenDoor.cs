@@ -8,6 +8,11 @@ public class OpenDoor : MonoBehaviour
 
     public float Delay;
     public float timer;
+    public Animator animator;
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -15,6 +20,15 @@ public class OpenDoor : MonoBehaviour
         {
             DoorOpened = !DoorOpened;
             timer = 0f;
+            if (DoorOpened)
+            {
+                animator.SetTrigger("Open");
+            }
+            else
+            {
+                animator.SetTrigger("Close");
+                
+            }
         }
         
     }
