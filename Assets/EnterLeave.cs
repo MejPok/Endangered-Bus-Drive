@@ -31,7 +31,18 @@ public class EnterLeave : MonoBehaviour
             {
                 control.npcs.Remove(this.gameObject);
                 Health.Instance.npcs.Add(this.gameObject);
-                
+
+            }
+        }
+
+        if (leaving)
+        {
+            var position = new Vector2(transform.position.x + 20, transform.position.y);
+            transform.position = Vector3.MoveTowards(transform.position, position, speed * Time.deltaTime);
+            if ((position - (Vector2)transform.position).magnitude < 1)
+            {
+                Destroy(this.gameObject);
+
             }
         }
     }

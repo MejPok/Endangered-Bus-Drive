@@ -106,7 +106,7 @@ public class PeopleManager : MonoBehaviour
             if (busHealth.Passengers > 1)
             {
                 peopleToLeave--;
-                busHealth.Passengers--;
+                busHealth.LetNpcLeave();
                 Debug.Log("Person got off the bus");
                 leaveTimer = 0f;
             }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 323218229212507091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.34, y: 8.13, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebfa0e5b7932a342a5caa0f8f02b53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bus: {fileID: 0}
   sprites:
   - {fileID: 2037919596, guid: 18a9c23e7750dcf45b7b0e308d406a74, type: 3}
   - {fileID: 1327102095, guid: 18a9c23e7750dcf45b7b0e308d406a74, type: 3}
@@ -141,6 +142,8 @@ MonoBehaviour:
   - {fileID: -1715602628, guid: 18a9c23e7750dcf45b7b0e308d406a74, type: 3}
   npcs: []
   basicPrefab: {fileID: 9058662508737331513, guid: 9541c8225bfcb884990580b2d5fbc3d2, type: 3}
+  frontDoor: {fileID: 0}
+  backDoor: {fileID: 0}
 --- !u!1 &1037610424800196800
 GameObject:
   m_ObjectHideFlags: 0
