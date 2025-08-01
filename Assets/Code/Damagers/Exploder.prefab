@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 926723759356685686}
   - component: {fileID: 7741703854063029190}
   - component: {fileID: 4472748446355507882}
+  - component: {fileID: 1385631103926126482}
   m_Layer: 0
   m_Name: Exploder
   m_TagString: Damager
@@ -166,3 +167,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 8360751356167046473, guid: f75369b30e7660a48b6897bd6bf8a0b7, type: 3}
+--- !u!114 &1385631103926126482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321826775344230762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408f80269e6c2b04693c343782880256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: e7b5bc4f5c1ab6448ac4a2fcd45337a6, type: 3}
+  - {fileID: 8300000, guid: 4454e5f3813c1d445953d3ce77e36c35, type: 3}
+  - {fileID: 8300000, guid: 1bda90827785b9c41af097209b294cd8, type: 3}
+  - {fileID: 8300000, guid: c2a07cb63a7dd0349bd1e3becc34b196, type: 3}
+  - {fileID: 8300000, guid: bc13f6d8b5df29b499334f525beaf123, type: 3}

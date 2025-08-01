@@ -94,18 +94,23 @@ public class Health : MonoBehaviour
         Debug.Log("Player died");
     }
 
+    public ParticleSystem bloodEffect;
     public void NpcDeath(int deaths)
     {
-        for (int i = 0; i < deaths; i++) {
-           if (npcs.Count > 0)
+        for (int i = 0; i < deaths; i++)
+        {
+            if (npcs.Count > 0)
             {
                 var npc = npcs[0];
                 npcs.RemoveAt(0);
                 Destroy(npc);
+                SoundManager.Instance.PlaySoundFX(GetComponent<FXChoser>().audioClips[Random.Range(0, GetComponent<FXChoser>().audioClips.Length)], transform, 100);
                 DeathCheck();
-                Debug.Log("implement passenger death effect");
-            } 
+                Instantiate(bloodEffect, transform.position, Quaternion.identity).
+                GetComponent<ParticleSystem>().Play();
+
+            }
         }
-        
+
     }
 }

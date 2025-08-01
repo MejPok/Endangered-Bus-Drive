@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6474726162863514842}
   - component: {fileID: 3627852009127546438}
   - component: {fileID: 5917966388761605945}
+  - component: {fileID: 3896587089382894617}
   m_Layer: 0
   m_Name: Bus
   m_TagString: Bus
@@ -193,9 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe037cea34ff3f4b9c1aca321aec102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxDurability: 50
+  MaxDurability: 100
   Durability: 0
-  Passengers: 0
   npcs: []
   BackDoor: {fileID: 8580891210873615802}
 --- !u!114 &6474726162863514842
@@ -247,6 +247,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3896587089382894617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680911971665240270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408f80269e6c2b04693c343782880256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: d4b08e5f5189a094e8727ecf1c17178e, type: 3}
+  - {fileID: 8300000, guid: bd9a86c03fd653a4c8a834a7d65f3e4b, type: 3}
+  - {fileID: 8300000, guid: 2d581e41b3895e3438ff9af0882da945, type: 3}
+  - {fileID: 8300000, guid: 0da2d0488832fe146a563746eec1ef8f, type: 3}
+  - {fileID: 8300000, guid: a7dab00c97a8f9c4688177a3669399ac, type: 3}
+  - {fileID: 8300000, guid: 4a20a459d08860e4db3cefe50cca719a, type: 3}
+  - {fileID: 8300000, guid: 283243a2fd2828d4ca46e80d73e1da14, type: 3}
 --- !u!1 &5012453435844839591
 GameObject:
   m_ObjectHideFlags: 0

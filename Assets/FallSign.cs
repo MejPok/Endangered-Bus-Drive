@@ -9,16 +9,28 @@ public class FallSign : MonoBehaviour
     public UnityEvent[] whatHappens;
 
     public string Tag;
+    public bool triggered;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(Tag))
         {
+            triggered = true;
             for (int i = 0; i < whatHappens.Length; i++)
             {
                 whatHappens[i].Invoke();
             }
         }
+
+
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(Tag))
+        {
+            triggered = false;
+        }
+        
 
     }
     Transform position;
@@ -28,25 +40,17 @@ public class FallSign : MonoBehaviour
     {
         if (position != null)
         {
-            if (whatMove == null)
-            {
-                transform.Translate((position.position - transform.position) * speed * Time.deltaTime, Space.World);
-            }
-            else
-            {
-                transform.Translate((whatMove.transform.position - transform.position) * speed * Time.deltaTime, Space.World);
-                
-            }
+            
+            
+            
+            transform.position = Vector3.MoveTowards(transform.position, position.position, speed * Time.deltaTime * 80);
+            
         }
     }
     public void MoveTo(Transform newPos)
     {
         position = newPos;
     }
-    public void MoveWhere(Transform newPos, GameObject whatToMove)
-    {
-        position = newPos;
-        whatMove = whatToMove;
-    }
+
     
 }
