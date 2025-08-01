@@ -16,11 +16,14 @@ public class EnterLeave : MonoBehaviour
         front = frontT;
         entering = true;
         leaving = false;
+        Debug.Log("trying to get on");
     }
     public void Leave()
     {
         leaving = true;
         entering = false;
+        Debug.Log("trying to leave");
+
     }
     void Update()
     {
@@ -29,7 +32,7 @@ public class EnterLeave : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, front.position, speed * Time.deltaTime);
             if ((front.position - transform.position).magnitude < 1)
             {
-                control.npcs.Remove(this.gameObject);
+                
                 Health.Instance.npcs.Add(this.gameObject);
 
             }

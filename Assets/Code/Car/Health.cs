@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public int MaxDurability;
     public int Durability;
 
-    public int Passengers;
+    public int Passengers {get{ return npcs.Count; } set{}}
 
     public List<GameObject> npcs = new List<GameObject>();
 
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
     public void HitObstacle(int damage)
     {
         Durability -= damage;
-        
+
     }
     public void HitWall(int damage)
     {
@@ -36,18 +36,18 @@ public class Health : MonoBehaviour
         Debug.Log("wall for " + damage);
 
         if (damage > 60) { Passengers -= 7; }
-        else if (damage > 40){ Passengers -= 4; }
-        else if (damage > 30){ Passengers -= 2; }
-        else if (damage > 20){ Passengers -= 1; }
-        else if (damage > 10){ if (Random.Range(0, 10) == 1) Passengers -= 1; }
-        else if (damage > 5){ if (Random.Range(0, 15) == 1) Passengers -= 1; }
+        else if (damage > 40) { Passengers -= 4; }
+        else if (damage > 30) { Passengers -= 2; }
+        else if (damage > 20) { Passengers -= 1; }
+        else if (damage > 10) { if (Random.Range(0, 10) == 1) Passengers -= 1; }
+        else if (damage > 5) { if (Random.Range(0, 15) == 1) Passengers -= 1; }
 
         DeathCheck();
     }
     public void HitDamager(int damage)
     {
         Durability -= damage;
-        Passengers -= (int)(damage / 10);
+        NpcDeath((int)(damage / 10));
         DeathCheck();
         Debug.Log("" + Durability);
         Debug.Log("Passengers died " + damage);
@@ -83,15 +83,29 @@ public class Health : MonoBehaviour
         if (Passengers <= 0 || Durability <= 0)
         {
             Death();
-            
+
         }
 
     }
 
     public void Death()
     {
-        
+
         Debug.Log("Player died");
     }
 
+    public void NpcDeath(int deaths)
+    {
+        for (int i = 0; i < deaths; i++) {
+           if (npcs.Count > 0)
+            {
+                var npc = npcs[0];
+                npcs.RemoveAt(0);
+                Destroy(npc);
+                DeathCheck();
+                Debug.Log("implement passenger death effect");
+            } 
+        }
+        
+    }
 }

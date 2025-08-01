@@ -18,7 +18,7 @@ public class DamageDetection : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Damager"))
         {
-            Debug.Log("Implement damager");
+            
 
         }
         else if (other.gameObject.CompareTag("Obstacle"))

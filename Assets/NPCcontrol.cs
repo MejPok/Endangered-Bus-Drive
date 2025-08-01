@@ -20,6 +20,7 @@ public class NPCcontrol : MonoBehaviour
         for (int i = 0; i < pm.People; i++)
         {
             npcs.Add(CreateNPC());
+            npcs[i].GetComponent<EnterLeave>().control = this;
         }
     }
     public GameObject CreateNPC()
@@ -33,11 +34,15 @@ public class NPCcontrol : MonoBehaviour
 
     public void LetNPCin(int number)
     {
-        if (npcs.Count > number)
+        
+        npcs[0].GetComponent<EnterLeave>().control = this;
+        if (npcs[0].GetComponent<EnterLeave>().entering)
         {
-            npcs[number].GetComponent<EnterLeave>().control = this;
-            npcs[number].GetComponent<EnterLeave>().Enter(frontDoor);
-            
+             Debug.Log("its more times");
         }
+        npcs[0].GetComponent<EnterLeave>().Enter(frontDoor);
+        npcs.RemoveAt(0);
+
+        
     }
 }
