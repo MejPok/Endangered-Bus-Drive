@@ -23,12 +23,13 @@ public class NPCcontrol : MonoBehaviour
             npcs[i].GetComponent<EnterLeave>().control = this;
         }
     }
+    public Vector2 SpawnDirection;
     public GameObject CreateNPC()
     {
-        Debug.Log(new Vector2(transform.position.x - Random.Range(-3f, 3f) + 6, transform.position.x - Random.Range(-5f, 5f)));
-        var npc = Instantiate(basicPrefab, new Vector2(transform.position.x - Random.Range(-3f, 3f) + 6, transform.position.y - Random.Range(-5f, 5f)), Quaternion.identity);
+        Debug.Log(new Vector2(transform.position.x - Random.Range(-3f, 3f) , transform.position.x - Random.Range(-5f, 5f)));
+        var npc = Instantiate(basicPrefab, new Vector2(transform.position.x - Random.Range(-3f, 3f) + SpawnDirection.x, SpawnDirection.y + transform.position.y - Random.Range(-5f, 5f)) , Quaternion.identity);
         npc.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
-        
+
         return npc;
     }
 
