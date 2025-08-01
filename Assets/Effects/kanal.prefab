@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360751356167046473, guid: f75369b30e7660a48b6897bd6bf8a0b7, type: 3}
       propertyPath: m_Name
-      value: Kanal variant 1
+      value: kanal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -23,10 +23,11 @@ public class Exploder : MonoBehaviour
 
         Vector2 direction = bus.transform.position - transform.position;
         bus.GetComponent<Rigidbody2D>().AddForce(direction * 200);
-
+        GetComponent<TraumaInducer>().enabled = true;
+        
 
         SoundManager.Instance.PlaySoundFX(GetComponent<FXChoser>().audioClips[Random.Range(0, GetComponent<FXChoser>().audioClips.Length)], transform, 100);
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 1);
     }
 }

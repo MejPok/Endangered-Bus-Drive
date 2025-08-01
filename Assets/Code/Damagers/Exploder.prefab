@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7741703854063029190}
   - component: {fileID: 4472748446355507882}
   - component: {fileID: 1385631103926126482}
+  - component: {fileID: 7032467522879638270}
   m_Layer: 0
   m_Name: Exploder
   m_TagString: Damager
@@ -185,3 +186,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bda90827785b9c41af097209b294cd8, type: 3}
   - {fileID: 8300000, guid: c2a07cb63a7dd0349bd1e3becc34b196, type: 3}
   - {fileID: 8300000, guid: bc13f6d8b5df29b499334f525beaf123, type: 3}
+--- !u!114 &7032467522879638270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321826775344230762}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b6b88d425f7234aae309cb9a973743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Delay: 0
+  MaximumStress: 0.6
+  Range: 45
