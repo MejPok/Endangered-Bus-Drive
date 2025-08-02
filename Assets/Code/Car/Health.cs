@@ -37,13 +37,13 @@ public class Health : MonoBehaviour
         Durability -= damage;
         Debug.Log("wall for " + damage);
 
-        if (damage > 60) { Passengers -= 7; }
-        else if (damage > 40) { Passengers -= 4; }
-        else if (damage > 30) { Passengers -= 2; }
-        else if (damage > 20) { Passengers -= 1; }
-        else if (damage > 10) { if (Random.Range(0, 10) == 1) Passengers -= 1; }
-        else if (damage > 5) { if (Random.Range(0, 15) == 1) Passengers -= 1; }
-
+        if (damage > 60) { NpcDeath(4); }
+        else if (damage > 40) { NpcDeath(3); }
+        else if (damage > 30) { NpcDeath(2); }
+        else if (damage > 20) { NpcDeath(1); }
+        else if (damage > 10) { if (Random.Range(0, 10) == 1) NpcDeath(1); }
+        else if (damage > 5) { if (Random.Range(0, 15) == 1) NpcDeath(1); }
+        SoundManager.Instance.PlayHitSound();
         DeathCheck();
     }
     public void HitDamager(int damage)
@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
             npcs.RemoveAt(0);
             npc.SetActive(true);
             npc.transform.position = BackDoor.position;
-            npc.GetComponent<EnterLeave>().Leave();
+            npc.GetComponent<EnterLeave>().SpawnSadSmile();
         }
 
 

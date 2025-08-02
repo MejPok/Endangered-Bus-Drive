@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Vertical");     // W/S or Up/Down
         turnInput = Input.GetAxisRaw("Horizontal");   // A/D or Left/Right
+        GetAttributesFromHealth();
     }
 
     void FixedUpdate()
@@ -45,7 +46,7 @@ public class CarController : MonoBehaviour
         if (isPhysicallyMoving && Mathf.Abs(turnInput) > 0f)
         {
             float direction = -turnInput * Mathf.Sign(forwardSpeed != 0 ? forwardSpeed : 1);
-            rb.AddTorque(direction * (puddleDrift + steeringTorque) * Time.fixedDeltaTime);
+            rb.AddTorque(direction * (puddleDrift + steeringTorque - DisTorque) * Time.fixedDeltaTime);
         }
     }
     public float puddleDrift;
@@ -58,7 +59,37 @@ public class CarController : MonoBehaviour
     {
         puddleDrift = 0;
     }
+    float DisTorque;
 
+    public void GetAttributesFromHealth()
+    {
+        var health = GetComponent<Health>();
+        if (health.Durability > 90)
+        {
+            DisTorque = 10;
+        }
+        else if (health.Durability > 70)
+        {
+            DisTorque = 30;
 
+        }
+        else if (health.Durability > 50)
+        {
+            DisTorque = 50;
+
+        }
+        else if (health.Durability > 40)
+        {
+            DisTorque = 100;
+
+        }
+        else if (health.Durability > 20)
+        {
+            DisTorque = 170;
+        }
+        
+    }
+
+    
 
 }

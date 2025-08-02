@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnterLeave : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnterLeave : MonoBehaviour
 
     public bool entering;
     public bool leaving;
+    public GameObject sadSmile;
     public void Enter(Transform frontT)
     {
         front = frontT;
@@ -32,9 +34,9 @@ public class EnterLeave : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, front.position, speed * Time.deltaTime);
             if ((front.position - transform.position).magnitude < 1)
             {
-                
-                Health.Instance.npcs.Add(this.gameObject);
 
+                Health.Instance.npcs.Add(this.gameObject);
+                Health.Instance.Durability += 5;
             }
         }
 
@@ -48,5 +50,15 @@ public class EnterLeave : MonoBehaviour
 
             }
         }
+    }
+    bool done = false;
+    public void SpawnSadSmile()
+    {
+        if (done) return;
+
+        GameObject smile = Instantiate(sadSmile, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity);
+        Destroy(smile, 3);
+        Leave();
+        done = true;
     }
 }

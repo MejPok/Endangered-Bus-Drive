@@ -10,7 +10,7 @@ public class RestrictedRoad : MonoBehaviour
     void Awake()
     {
         restrictedRoad = this;
-        
+
         if (PlayerPrefs.HasKey(Key))
         {
             level = PlayerPrefs.GetInt(Key);
@@ -20,6 +20,7 @@ public class RestrictedRoad : MonoBehaviour
             level = 0;
         }
 
+        
         
     }
 

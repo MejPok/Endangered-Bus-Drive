@@ -7,10 +7,8 @@ public class UIcontrol : MonoBehaviour
 {
     public Health health;
     public TextMeshProUGUI passengers;
-    public TextMeshProUGUI durability;
     void Update()
     {
-        passengers.text = "Passengers: " + health.Passengers;
-        durability.text = "Durability: " + health.Durability;
+        passengers.text = "" + health.Passengers;
     }
 }

@@ -18,6 +18,7 @@ public class PeopleManager : MonoBehaviour
     bool gotHistory;
     Health busHealth;
     NPCcontrol control;
+    public int PeopleSad;
 
     void Start()
     {
@@ -28,10 +29,17 @@ public class PeopleManager : MonoBehaviour
         busHealth = bus.GetComponent<Health>();
         PeopleEagerness();
 
+        PeopleSad = People - PeopleToBoard;
 
-        
         PeopleGettingOn();
         PeoplGettingOff();
+
+        if (PeopleToBoard == 0)
+        {
+            foreach (var npc in control.npcs) {
+                npc.GetComponent<EnterLeave>().SpawnSadSmile();
+            }
+        }
     }
 
     bool decided;

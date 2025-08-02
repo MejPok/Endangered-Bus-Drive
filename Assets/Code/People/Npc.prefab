@@ -110,8 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c24d023e1fe44849be56cb498925919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  control: {fileID: 0}
   speed: 3.4
   front: {fileID: 0}
   back: {fileID: 0}
   entering: 0
   leaving: 0
+  sadSmile: {fileID: 530465832151755823, guid: b856cf4bf71abb64a98a0f6e294cb6b8, type: 3}
