@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class FallSign : MonoBehaviour
 {
     public UnityEvent[] whatHappens;
+    public UnityEvent[] whatHappensLeave;
 
     public string Tag;
     public bool triggered;
@@ -24,11 +25,28 @@ public class FallSign : MonoBehaviour
 
 
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!gameObject.name.Contains("Puddle")) return;
+        if (other.gameObject.CompareTag(Tag))
+        {
+            triggered = true;
+            for (int i = 0; i < whatHappens.Length; i++)
+            {
+                whatHappens[i].Invoke();
+            }
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(Tag))
         {
             triggered = false;
+            for (int i = 0; i < whatHappensLeave.Length; i++)
+            {
+                whatHappensLeave[i].Invoke();
+            }
         }
         
 

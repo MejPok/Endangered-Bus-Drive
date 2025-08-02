@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public List<GameObject> npcs = new List<GameObject>();
 
     public Transform BackDoor;
+    public bool Alive;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         Durability = MaxDurability;
+        Alive = true;
     }
 
     public void HitObstacle(int damage)
@@ -90,7 +92,8 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-
+        Alive = false;
+        GetComponent<Death>().Dead();
         Debug.Log("Player died");
     }
 

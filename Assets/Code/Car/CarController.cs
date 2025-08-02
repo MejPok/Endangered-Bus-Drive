@@ -1,7 +1,8 @@
 using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-public class CarController : MonoBehaviour {
+public class CarController : MonoBehaviour
+{
 
     public float acceleration = 10f;
     public float maxSpeed = 5f;
@@ -16,7 +17,7 @@ public class CarController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
         rb.drag = drag;
-        
+
     }
 
     void Update()
@@ -25,28 +26,38 @@ public class CarController : MonoBehaviour {
         turnInput = Input.GetAxisRaw("Horizontal");   // A/D or Left/Right
     }
 
-void FixedUpdate()
-{
-    Vector2 forward = transform.up;
-
-    // Speed in the forward direction
-    float forwardSpeed = Vector2.Dot(rb.velocity, forward);
-
-    // Apply acceleration when under speed limit or changing direction
-    if (Mathf.Abs(forwardSpeed) < maxSpeed || Mathf.Sign(moveInput) != Mathf.Sign(forwardSpeed))
+    void FixedUpdate()
     {
-        rb.AddForce(forward * moveInput * acceleration);
+        Vector2 forward = transform.up;
+
+        // Speed in the forward direction
+        float forwardSpeed = Vector2.Dot(rb.velocity, forward);
+
+        // Apply acceleration when under speed limit or changing direction
+        if (Mathf.Abs(forwardSpeed) < maxSpeed || Mathf.Sign(moveInput) != Mathf.Sign(forwardSpeed))
+        {
+            rb.AddForce(forward * moveInput * acceleration);
+        }
+
+        // ✅ Allow rotation when physically moving (not based on input)
+        bool isPhysicallyMoving = rb.velocity.magnitude > 0.8f;
+
+        if (isPhysicallyMoving && Mathf.Abs(turnInput) > 0f)
+        {
+            float direction = -turnInput * Mathf.Sign(forwardSpeed != 0 ? forwardSpeed : 1);
+            rb.AddTorque(direction * (puddleDrift + steeringTorque) * Time.fixedDeltaTime);
+        }
     }
-
-    // ✅ Allow rotation when physically moving (not based on input)
-    bool isPhysicallyMoving = rb.velocity.magnitude > 0.8f;
-
-    if (isPhysicallyMoving && Mathf.Abs(turnInput) > 0f)
+    public float puddleDrift;
+    public float puddleChange;
+    public void EnterPuddle()
     {
-        float direction = -turnInput * Mathf.Sign(forwardSpeed != 0 ? forwardSpeed : 1);
-        rb.AddTorque(direction * steeringTorque * Time.fixedDeltaTime);
+        puddleDrift = puddleChange;
     }
-}
+    public void LeavePuddle()
+    {
+        puddleDrift = 0;
+    }
 
 
 

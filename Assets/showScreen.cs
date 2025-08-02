@@ -19,7 +19,7 @@ public class showScreen : MonoBehaviour
             PlayerPrefs.SetInt("Try", 1);
             NumberOfTries = 1;
         }
-
+        
         text.text = "Loop Number: ";
     }
     float timer;
