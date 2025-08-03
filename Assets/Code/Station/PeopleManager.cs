@@ -47,7 +47,7 @@ public class PeopleManager : MonoBehaviour
     {
         if (decided) return;
 
-        if (busHealth.Durability == 100)
+        if (busHealth.Durability >= 100)
         {
             PeopleToBoard = People;
             peopleToLeave = (int)(busHealth.Passengers * Random.Range(0f, 0.1f));

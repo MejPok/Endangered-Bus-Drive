@@ -25,7 +25,11 @@ public class Busdetection : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bus")
         {
-            SoundManager.Instance.controlsSpace.SetActive(false);
+            if (SoundManager.Instance.controlsSpace is not null)
+            {
+                SoundManager.Instance.controlsSpace.SetActive(false);
+            }
+            
         }
     }
 }

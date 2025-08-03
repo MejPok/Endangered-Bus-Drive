@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class WinCondition : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class WinCondition : MonoBehaviour
         if (reachedA && reachedE && barrierWent)
         {
             Win = true;
+            PlayerPrefs.SetInt("Restricted", 0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
     }
 
@@ -33,6 +38,6 @@ public class WinCondition : MonoBehaviour
 
     public void WentThroughBarrier()
     {
-        
+        barrierWent = true;
     }
 }
